@@ -1,0 +1,56 @@
+{% import "_includes/forms" as forms %}
+
+{{ forms.textField({
+	label: "Widget title"|t,
+	id: 'title',
+	name: 'title',
+	value: settings.title,
+	required: true,
+	errors: settings.getErrors('title')
+}) }}
+
+
+{% if CraftEdition >= CraftClient %}
+	{% set sectionInput %}
+		<div class="select">
+			<select id="section" name="section">
+				<option value="*">{{ "All"|t }}</option>
+				{% for section in craft.sections.getAllSections() %}
+					{% if section.type != 'single' %}
+						<option value="{{ section.id }}"{% if section.id == settings.section %} selected{% endif %}>{{ section.name|t }}</option>
+					{% endif %}
+				{% endfor %}
+			</select>
+		</div>
+	{% endset %}
+
+	{{ forms.field({
+		label: "Section"|t,
+		instructions: "Which section do you want to pull recent entries from?"|t,
+		id: 'section',
+		required: true,
+	}, sectionInput) }}
+
+{% endif %}
+
+
+{{ forms.textField({
+	label: "When should entries be considered old?"|t,
+	id: 'days',
+	name: 'days',
+	value: settings.days,
+	size: 3,
+	required: true,
+	errors: settings.getErrors('days')
+}) }}
+
+
+{{ forms.textField({
+	label: "Limit"|t,
+	id: 'limit',
+	name: 'limit',
+	value: settings.limit,
+	size: 3,
+	required: true,
+	errors: settings.getErrors('limit')
+}) }}

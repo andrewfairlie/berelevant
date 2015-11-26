@@ -1,0 +1,18 @@
+<div class="berelevant-container">
+	{% if entries|length %}
+		<table class="data fullwidth">
+			{% for entry in entries %}
+				<tr>
+					<td>
+						<a href="{{ entry.getCpEditUrl() }}">{{ entry.title }}</a>
+						<span class="light" style="display: block;">
+							{%- if entry.dateUpdated %}Last updated {{ entry.dateUpdated.uiTimestamp() }}{% endif %}
+						</span>
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<p>{{ "Everything's up to date"|t }}</p>
+	{% endif %}
+</div>
