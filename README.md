@@ -1,5 +1,12 @@
 # Be Relevant
-A nifty Craft CMS dashboard widget that tells you about potentially outdated entries
+A nifty Craft CMS dashboard widget that tells you about potentially outdated entries.
+
+You can add multiple versions of the widget on your dashboard and set:-
+
+- A custom widget title, (eg: "Legal pages that need review")
+- The section
+- How many days since updating should it be considered old
+- The limit of entries that can display in the widget
 
 ## Current Shortcomings
 - It doesn't take into account locales
